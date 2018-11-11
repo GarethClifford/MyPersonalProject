@@ -3,7 +3,7 @@ package com.qa.service;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.qa.domain.Recipes;
+import com.qa.persistence.domain.Recipes;
 
 public class RecipeService {
 	
