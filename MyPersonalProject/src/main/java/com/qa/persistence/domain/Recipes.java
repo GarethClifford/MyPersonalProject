@@ -1,6 +1,5 @@
 package com.qa.persistence.domain;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,7 +17,7 @@ public class Recipes {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "recipe_id")
+
 	private String recipeID;
 	@Column(length = 50)
 	private String recipeName;
@@ -27,10 +25,11 @@ public class Recipes {
 	private String recipeIngredients;
 	@Column(length = 300)
 	private String recipeMethod;
-
+	
+	@JoinColumn(name = "userID")
 	private String userID;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "recipe_id")
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name = "reviewID")
 	private Set<Reviews> reviews;
 
 	public Recipes() {

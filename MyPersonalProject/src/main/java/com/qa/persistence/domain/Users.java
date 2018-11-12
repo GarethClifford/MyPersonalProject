@@ -13,28 +13,24 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 public class Users {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "user_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "userID")
 	private String userID;
 	@Column(length = 50)
 	private String userName;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id")
-	private Set<Recipes> recipes;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "recipe_id")
-	private Set<Reviews> review;
+
 
 	public Users() {
 	}
 
-	public Users(String userid, String username, Set<Recipes> recipes) {
-		this.userID = userid;
+	public Users(String username) {
 		this.userName = username;
-		this.recipes = recipes;
 	}
 
 	public String getUserName() {
@@ -55,18 +51,6 @@ public class Users {
 
 	public List<Recipes> getRecipe() {
 		return getRecipe();
-	}
-
-	public void setRecipeID(Set<Recipes> recipe) {
-		this.recipes = recipe;
-	}
-
-	public Set<Reviews> getReview() {
-		return review;
-	}
-
-	public void setReview(Set<Reviews> reviews) {
-		this.review = reviews;
 	}
 
 }

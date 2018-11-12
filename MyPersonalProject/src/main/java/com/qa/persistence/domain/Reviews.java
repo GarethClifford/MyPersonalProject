@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Reviews {
@@ -17,9 +19,11 @@ public class Reviews {
 	private Long reviewRating;
 	@Column(length = 100)
 	private String reviewComments;
-
+	
+	@JoinColumn(name = "userID")
 	private String userID;
 
+	@JoinColumn(name = "recipeID")
 	private String recipeID;
 
 	public Reviews() {
