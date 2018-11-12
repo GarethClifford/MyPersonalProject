@@ -15,9 +15,11 @@ import javax.transaction.Transactional;
 import com.qa.persistence.domain.Recipes;
 import com.qa.util.JSONUtil;
 
+
+
 @Transactional(SUPPORTS)
 @Default
-public class RecipeDBRepo implements IRecipeDBRepo {
+public class RecipeDBRepo implements IRecipeDBRepo{
 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
@@ -25,6 +27,10 @@ public class RecipeDBRepo implements IRecipeDBRepo {
 	@Inject
 	private JSONUtil util;
 
+	/* (non-Javadoc)
+	 * @see com.qa.persistence.repository.IRecipeDBRepo#createRecipe(java.lang.String)
+	 */
+	@Override
 	@Transactional(REQUIRED)
 	public String createRecipe(String recipe) {
 		Recipes r = util.getObjectforJSON(recipe, Recipes.class);
@@ -33,16 +39,28 @@ public class RecipeDBRepo implements IRecipeDBRepo {
 		return "{\"message\": \"Recipe successfully created\"}";
 	}
 
+	/* (non-Javadoc)
+	 * @see com.qa.persistence.repository.IRecipeDBRepo#searchRecipe(java.lang.Long)
+	 */
+	@Override
 	public Recipes searchRecipe(Long id) {
 		return em.find(Recipes.class, id);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.qa.persistence.repository.IRecipeDBRepo#getAllRecipes()
+	 */
+	@Override
 	public String getAllRecipes() {
 		Query query = em.createQuery(("SELECT r FROM Recipes r"));
 		Collection<Recipes> recipes = (Collection<Recipes>) query.getResultList();
 		return util.getJSONForObject(recipes);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.qa.persistence.repository.IRecipeDBRepo#updateRecipe(java.lang.String, java.lang.Long)
+	 */
+	@Override
 	@Transactional(REQUIRED)
 	public String updateRecipe(String recipe, Long id) {
 		Recipes newInfo = util.getObjectforJSON(recipe, Recipes.class);
@@ -55,6 +73,10 @@ public class RecipeDBRepo implements IRecipeDBRepo {
 		return "{\"message\": \"Recipe sucessfully updated\"}";
 	}
 
+	/* (non-Javadoc)
+	 * @see com.qa.persistence.repository.IRecipeDBRepo#deleteRecipe(java.lang.Long)
+	 */
+	@Override
 	@Transactional(REQUIRED)
 	public String deleteRecipe(Long id) {
 		if (em.find(Recipes.class, id) != null) {

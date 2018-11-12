@@ -3,12 +3,12 @@ package com.qa.business.service;
 import javax.inject.Inject;
 
 import com.qa.persistence.domain.Recipes;
-import com.qa.persistence.repository.RecipeDBRepo;
+import com.qa.persistence.repository.IRecipeDBRepo;
 
 public class RecipeService implements IRecipeService {
 
 	@Inject
-	RecipeDBRepo repo;
+	IRecipeDBRepo repo;
 
 	/* (non-Javadoc)
 	 * @see com.qa.business.service.IRecipeService#createRecipe(java.lang.String)

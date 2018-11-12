@@ -1,6 +1,7 @@
 package com.qa.persistence.domain;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,22 +19,19 @@ public class Users {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
 	private String userID;
-
 	@Column(length = 50)
 	private String userName;
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
-	private List<Recipes> recipes;
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<Recipes> recipes;
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "recipe_id")
-	private List<Reviews> review;
+	private Set<Reviews> review;
 
 	public Users() {
 	}
 
-	public Users(String userid, String username, List<Recipes> recipes) {
+	public Users(String userid, String username, Set<Recipes> recipes) {
 		this.userID = userid;
 		this.userName = username;
 		this.recipes = recipes;
@@ -59,15 +57,15 @@ public class Users {
 		return getRecipe();
 	}
 
-	public void setRecipeID(List<Recipes> recipe) {
+	public void setRecipeID(Set<Recipes> recipe) {
 		this.recipes = recipe;
 	}
 
-	public List<Reviews> getReview() {
+	public Set<Reviews> getReview() {
 		return review;
 	}
 
-	public void setReview(List<Reviews> reviews) {
+	public void setReview(Set<Reviews> reviews) {
 		this.review = reviews;
 	}
 

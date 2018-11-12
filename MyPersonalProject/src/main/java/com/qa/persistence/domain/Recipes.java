@@ -1,6 +1,7 @@
 package com.qa.persistence.domain;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -27,9 +29,9 @@ public class Recipes {
 	private String recipeMethod;
 
 	private String userID;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "recipe_id")
-	private List<Reviews> reviews;
+	private Set<Reviews> reviews;
 
 	public Recipes() {
 	}
@@ -81,11 +83,11 @@ public class Recipes {
 		this.userID = userID;
 	}
 
-	public List<Reviews> getReviews() {
+	public Set<Reviews> getReviews() {
 		return reviews;
 	}
 
-	public void setReviews(List<Reviews> reviews) {
+	public void setReviews(Set<Reviews> reviews) {
 		this.reviews = reviews;
 	}
 
