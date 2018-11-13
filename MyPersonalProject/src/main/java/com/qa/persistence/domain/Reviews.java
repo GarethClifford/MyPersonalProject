@@ -14,15 +14,13 @@ public class Reviews {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(length = 4)
-	private String reviewID;
+	private Long reviewID;
 	@Column(length = 1)
 	private Long reviewRating;
 	@Column(length = 100)
 	private String reviewComments;
-	
 	@JoinColumn(name = "userID")
-	private String userID;
-
+	private String userID;	
 	@JoinColumn(name = "recipeID")
 	private String recipeID;
 
@@ -34,11 +32,11 @@ public class Reviews {
 		this.reviewComments = reviewcomments;
 	}
 
-	public String getReviewID() {
+	public Long getReviewID() {
 		return reviewID;
 	}
 
-	public void setReviewID(String reviewID) {
+	public void setReviewID(Long reviewID) {
 		this.reviewID = reviewID;
 	}
 

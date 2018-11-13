@@ -18,7 +18,7 @@ public class Recipes {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
-	private String recipeID;
+	private Long recipeID;
 	@Column(length = 50)
 	private String recipeName;
 	@Column(length = 250)
@@ -29,7 +29,7 @@ public class Recipes {
 	@JoinColumn(name = "userID")
 	private String userID;
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	@JoinColumn(name = "reviewID")
+	@JoinColumn(name = "recipeID")
 	private Set<Reviews> reviews;
 
 	public Recipes() {
@@ -46,40 +46,40 @@ public class Recipes {
 		return recipeName;
 	}
 
-	public void setRecipeName(String recipeName) {
-		this.recipeName = recipeName;
+	public void setRecipeName(String recipename) {
+		this.recipeName = recipename;
 	}
 
 	public String getRecipeIngredients() {
 		return recipeIngredients;
 	}
 
-	public void setRecipeIngredients(String recipeIngredients) {
-		this.recipeIngredients = recipeIngredients;
+	public void setRecipeIngredients(String recipeingredients) {
+		this.recipeIngredients = recipeingredients;
 	}
 
 	public String getRecipeMethod() {
 		return recipeMethod;
 	}
 
-	public void setRecipeMethod(String recipeMethod) {
-		this.recipeMethod = recipeMethod;
+	public void setRecipeMethod(String recipemethod) {
+		this.recipeMethod = recipemethod;
 	}
 
-	public String getRecipeID() {
+	public Long getRecipeID() {
 		return recipeID;
 	}
 
-	public void setRecipeID(String recipeID) {
-		this.recipeID = recipeID;
+	public void setRecipeID(Long recipeid) {
+		this.recipeID = recipeid;
 	}
 
 	public String getUserID() {
 		return userID;
 	}
 
-	public void setUserID(String userID) {
-		this.userID = userID;
+	public void setUserID(String userid) {
+		this.userID = userid;
 	}
 
 	public Set<Reviews> getReviews() {

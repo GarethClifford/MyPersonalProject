@@ -4,7 +4,7 @@ INSERT INTO RECIPES (recipeIngredients, recipeMethod, recipeName, userID) VALUES
 
 INSERT INTO RECIPES (recipeIngredients, recipeMethod, recipeName, userID) VALUES ('Cheese and bread', 'Slightly toast the bread, then add cheese then toad again', 'Cheese on toast', 2);
 
-INSERT INTO RECIPES (recipeIngredients, recipeMethod, recipeName, userID) VALUES ('Stuff', 'Do it', 'Name', 5);
+
 
 INSERT INTO REVIEWS (recipeID, reviewComments, reviewRating, userID) VALUES (3, 'Horrible', 2, 4);
 
