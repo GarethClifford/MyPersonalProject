@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import com.qa.persistence.domain.Reviews;
 import com.qa.persistence.domain.Users;
 import com.qa.util.JSONUtil;
 
@@ -58,6 +59,7 @@ public class UserDBRepo implements IUserDBRepo {
 	/* (non-Javadoc)
 	 * @see com.qa.persistence.repository.IUser#updateUser(java.lang.String, java.lang.Long)
 	 */
+	@Transactional(REQUIRED)
 	@Override
 	public String updateUser(String user, Long id) {
 		Users newInfo = util.getObjectforJSON(user, Users.class);
@@ -71,10 +73,11 @@ public class UserDBRepo implements IUserDBRepo {
 	/* (non-Javadoc)
 	 * @see com.qa.persistence.repository.IUser#deleteUser(java.lang.Long)
 	 */
+	@Transactional(REQUIRED)
 	@Override
 	public String deleteUser(Long id) {
 		if (em.find(Users.class, id) != null) {
-			em.remove(id);
+			em.remove(em.find(Users.class, id));
 			return "{\"message\": \"User sucessfully deleted\"}";
 		} else
 			return "{\"message\": \"User not found\"}";

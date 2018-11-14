@@ -76,7 +76,7 @@ public class ReviewDBRepo implements IReviewDBRepo {
 	@Transactional(REQUIRED)
 	public String deleteReview(Long id) {
 		if (em.find(Reviews.class, id) != null) {
-			em.remove(id);
+			em.remove(em.find(Reviews.class, id));
 			return "{\"message\": \"Review successfully deleted\"}";
 		} else
 			return "{\"message\": \"Review not found\"}";

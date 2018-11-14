@@ -13,6 +13,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.qa.persistence.domain.Recipes;
+import com.qa.persistence.domain.Users;
 import com.qa.util.JSONUtil;
 
 
@@ -80,7 +81,7 @@ public class RecipeDBRepo implements IRecipeDBRepo{
 	@Transactional(REQUIRED)
 	public String deleteRecipe(Long id) {
 		if (em.find(Recipes.class, id) != null) {
-			em.remove(id);
+			em.remove(em.find(Recipes.class, id));
 			return "{\"message\": \"Recipe sucessfully deleted\"}";
 		} else
 			return "{\"message\": \"Recipe not found\"}";
