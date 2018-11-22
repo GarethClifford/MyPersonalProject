@@ -86,5 +86,13 @@ public class RecipeDBRepo implements IRecipeDBRepo{
 		} else
 			return "{\"message\": \"Recipe not found\"}";
 	}
+	
+	public void setManager(EntityManager manager) {
+		this.em = manager;
+	}
+	
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
 
 }

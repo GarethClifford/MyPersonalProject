@@ -81,5 +81,13 @@ public class ReviewDBRepo implements IReviewDBRepo {
 		} else
 			return "{\"message\": \"Review not found\"}";
 	}
+	
+	public void setManager(EntityManager manager) {
+		this.em = manager;
+	}
+	
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
 
 }

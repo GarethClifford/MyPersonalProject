@@ -83,4 +83,12 @@ public class UserDBRepo implements IUserDBRepo {
 			return "{\"message\": \"User not found\"}";
 	}
 
+	public void setManager(EntityManager manager) {
+		this.em = manager;
+	}
+	
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
+
 }

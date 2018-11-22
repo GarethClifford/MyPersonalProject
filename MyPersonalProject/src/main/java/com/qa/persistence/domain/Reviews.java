@@ -71,5 +71,6 @@ public class Reviews {
 	public void setRecipeID(String recipeID) {
 		this.recipeID = recipeID;
 	}
+	
 
 }
