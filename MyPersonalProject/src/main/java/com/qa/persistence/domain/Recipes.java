@@ -17,7 +17,6 @@ public class Recipes {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Long recipeID;
 	@Column(length = 50)
 	private String recipeName;
